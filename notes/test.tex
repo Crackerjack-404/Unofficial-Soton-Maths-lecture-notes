@@ -1,69 +1,27 @@
-\section{Probability basics}
+\section{MathJax Render Test}
 
-\subsection{Definitions and notation}
+Inline:
+$x^2$, $\alpha + \beta$, $\sqrt{2}$, $\frac{a}{b}$.
 
-The language used in probability is occasionally confusing, so we will go through the definitions of some key terms.
+Display:
+$$
+\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+$$
 
-\begin{defbox}
-    \begin{definition}[Experiment]
-        An experiment is a reproducible activity that has a result that can be observed or recorded.
-    \end{definition}
-    \begin{definition}[Outcome]
-        An outcome is simply an observation value of an experiment.
-    \end{definition}
-\end{defbox}
+$$
+\int_0^{2\pi} \sin x\,dx = 0
+$$
 
-We can lay all of the possible outcomes out in a \textit{sample space}. Here is the sample space for an experiment which takes the product of two four-sided spinners as its outcome.
+\section{More Tests}
 
-\begin{table}[H]
-    \centering
-    \begin{tblr}{cells = {c,b},vline{2}={-}{},hline{2}={-}{}}
-         & $-3$ & $-1$ & $1$  & $3$  \\
-        $-3$                                            & $9$  & $3$  & $-3$ & $-9$ \\
-        $-1$                                            & $3$  & $1$  & $-1$ & $-3$ \\
-        $1$                                             & $-3$ & $-1$ & $1$  & $3$  \\
-        $3$                                             & $-9$ & $-3$ & $3$  & $9$ 
-    \end{tblr}
-\end{table}
+Symbols:
+$\forall x \in \mathbb{R},; x^2 \ge 0$.
 
-The values in the array represent the possible outcomes of the experiment. Thus, the sample space is the set of all outcomes of an experiment, usually denoted by $\Omega$.
-
-\begin{defbox}
-    \begin{definition}[Sample space]
-        The sample space $\Omega$ is the set of all possible outcomes from an experiment.
-    \end{definition}
-    \begin{definition}[Event]
-        An event is an outcome or a collection of outcomes. More specifically, an event $E$ is a subset of $\Omega$.
-    \end{definition}
-\end{defbox}
-
-If we think of the set of outcomes as a set $\Omega = \{1,2,3,4,5,6\}$ like a die, we can think of the set of events (often called the event space) as the power set of $\Omega$, $\powerset(\Omega)$. (The power set is the set of all subsets of $\Omega$, representing every combination of the outcomes in $\Omega$.) We may denote the event space by $\mathcal{F}$, though we are unlikely to use it extensively.
-
-When notating the words `and', `not' and `or', we use set theory symbols. To describe the situation where only outcomes that are not in an event $A$ are able to happen, we use $A^\complement$. More commonly you will see this written as $A'$. When only the outcomes mutual to events $A$ and $B$ are able to happen, we use $A \cap B$. When the outcomes of $A$ and $B$ can both happen, we use $A \cup B$. These are the same as the set theory symbols you will have seen at GCSE.
-
-Finally, to denote the probability of an event, we use the probability measure symbol $\probability(X)$ for an event $X$. This denotes the probability that the event $X$ occurs. (This is also, and perhaps more commonly, written simply as $\mathrm{P}(X)$ without the blackboard bold font.)
-
-\subsection{Basic intuitive results}
-
-We will now list some basic intuitive results in probability.
-
-\begin{theorembox}
-    \begin{theorem}
-        If all outcomes have the same probability of occurring, then for an event $A$ and a sample space $\Omega$: $$\probability(A) = \frac{\#A}{\#\Omega}$$ where $\#$ denotes the cardinality (size) of the set.
-    \end{theorem}
-\end{theorembox}
-\begin{ebox}
-    \begin{example}
-        If I have a fair die with outcomes in a sample space $\{1,2,3,4,5,6\}$, then the event of me getting an even number is $\{2,4,6\}$. The sample space has 6 elements, and the given event has 3 elements. Thus, $\probability(\{2,4,6\}) = \frac{3}{6} = 0.5$.
-    \end{example}
-\end{ebox}
-
-\begin{theorembox}
-    \begin{theorem}
-    \label{complement_theorem}
-        For any event $A$: $$\probability(A^\complement) = 1 - \probability(A)$$
-    \end{theorem}
-    (This should be self-explanatory knowing that for a sample space $\Omega$, $\probability(\Omega) = 1$.)
-\end{theorembox}
-
-\section{Independence and mutual exclusivity}
+Matrix:
+$$
+A =
+\begin{pmatrix}
+1 & 0 \
+0 & 1
+\end{pmatrix}
+$$
