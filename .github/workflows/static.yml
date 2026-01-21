@@ -1,4 +1,4 @@
-name: Build and deploy LaTeX notes to Pages
+name: Build & Deploy LaTeX Notes (Pandoc -> HTML)
 
 on:
   push:
@@ -18,18 +18,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repo
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Install pandoc
+      - name: Install Pandoc
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc
 
-      - name: Build HTML (all .tex in notes/)
+      - name: Build HTML from all .tex files in notes/
         run: |
           mkdir -p _site
-          # Simple index page
+
+          # Make a simple landing page
           cat > _site/index.html <<'EOF'
           <!doctype html>
           <html>
@@ -43,22 +44,26 @@ jobs:
             <ul>
           EOF
 
+          # Build one HTML page per .tex file
           shopt -s nullglob
           for f in notes/*.tex; do
             base="$(basename "$f" .tex)"
-            out="_site/${base}.html"
-            pandoc "$f" -s --toc \
-            --mathjax="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" \
-            -o "_site/$name.html"
+            pandoc "$f" \
+              -s \
+              --toc \
+              --mathjax="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" \
+              -o "_site/${base}.html"
             echo "  <li><a href=\"${base}.html\">${base}</a></li>" >> _site/index.html
           done
 
+          # Close landing page
           cat >> _site/index.html <<'EOF'
             </ul>
           </body>
           </html>
           EOF
 
+          # Stop any Jekyll processing
           touch _site/.nojekyll
 
       - name: Upload Pages artifact
@@ -69,10 +74,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
