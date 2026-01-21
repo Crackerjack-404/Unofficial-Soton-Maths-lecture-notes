@@ -1,108 +1,69 @@
-\section{What is this, why does this exist}
-It would be a good idea to read the previous chapter on Simplex to refresh memory of what it does. 
+\section{Probability basics}
 
-But OCR MEI is needy, so we also need to know how we can use LP to model and solve real-world problems (so they say...) that involve optimisation. It's actually pretty cool, but can also get a bit boring. 
+\subsection{Definitions and notation}
 
-You need to be able to apply to LP to these four areas, so it's ultimately good revision! 
+The language used in probability is occasionally confusing, so we will go through the definitions of some key terms.
 
-\begin{enumerate}
-    \item Shortest path 
-    \item Longest path 
-    \item Capacity networks
-    \item Matching problems 
-    \item Allocation 
-    \item Transportation 
-\end{enumerate} 
+\begin{defbox}
+    \begin{definition}[Experiment]
+        An experiment is a reproducible activity that has a result that can be observed or recorded.
+    \end{definition}
+    \begin{definition}[Outcome]
+        An outcome is simply an observation value of an experiment.
+    \end{definition}
+\end{defbox}
 
-The best way to practice this to topic is.. well - to just do shed loads of questions on them. MEI can be pretty harsh on them, so doing questions is the way to go as boring as it sounds!
+We can lay all of the possible outcomes out in a \textit{sample space}. Here is the sample space for an experiment which takes the product of two four-sided spinners as its outcome.
 
-\section{Indicator Variables}
-
-
-\section{Network Flows}
-This is a bit different from shortest/longest paths. In this case, the variables are the flows through the arcs. 
-
-So how the fuck do you deal with this if you're not using indicator variables? 
-\begin{itemize}
-    \item Maximise flows going out of S 
-    \item Maximise flows going into T
-\end{itemize}
-
-Consider this flow below: 
-
-Out objective function here could be 
-
-$$
-SA + SB
-$$
-
-Subject to: this is flow going it take away the flow out = 0 
-$$
-SA + BA - AB - AT - AT = 0 
-$$
-$$
-SB + AB - BA - BT = 0 
-$$
-$$
-SA \leq 8 
-$$
-$$
-SB \leq 5
-$$
-$$
-AB \leq 7 
-$$
-$$
-BA\leq 7 
-$$
-...etc 
-
-
-\subsection{Finding maximum flows}
-Either look at sum of edges come out of S, or sum of edges going into T
-
-
-\section{CPA}
-
-WE want to minimise the time taken to complete a task. 
-
-
-\section{Summary}
-I've had to just do a summary! (It's getting late and I ought not be working too late into my bedtime and (2) - best way like I said to actually do questions on these topics) 
-
-\begin{table}[h!]
-\centering
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{4cm}|}
-\hline
-\textbf{Problem} & \textbf{Objective} & \textbf{Variables} & \textbf{Key Constraints} \\
-\hline
-\textbf{Shortest Path} & Minimise total distance or cost & $x_{ij} \in \{0,1\}$ (or $\geq 0$ in LP relaxation) & Flow conservation at all nodes; 1 unit out from start, 1 unit into end \\
-\hline
-\textbf{Longest Path (CPA)} & Maximise event time at the end node & $d_i \in \mathbb{R}$ (event start times) & $d_j \geq d_i + t_{ij}$ for each arc $i \to j$ \\
-\hline
-\end{tabular}
-\caption{LP Formulations for Shortest and Longest Path Problems}
+\begin{table}[H]
+    \centering
+    \begin{tblr}{cells = {c,b},vline{2}={-}{},hline{2}={-}{}}
+         & $-3$ & $-1$ & $1$  & $3$  \\
+        $-3$                                            & $9$  & $3$  & $-3$ & $-9$ \\
+        $-1$                                            & $3$  & $1$  & $-1$ & $-3$ \\
+        $1$                                             & $-3$ & $-1$ & $1$  & $3$  \\
+        $3$                                             & $-9$ & $-3$ & $3$  & $9$ 
+    \end{tblr}
 \end{table}
 
+The values in the array represent the possible outcomes of the experiment. Thus, the sample space is the set of all outcomes of an experiment, usually denoted by $\Omega$.
 
+\begin{defbox}
+    \begin{definition}[Sample space]
+        The sample space $\Omega$ is the set of all possible outcomes from an experiment.
+    \end{definition}
+    \begin{definition}[Event]
+        An event is an outcome or a collection of outcomes. More specifically, an event $E$ is a subset of $\Omega$.
+    \end{definition}
+\end{defbox}
 
-\begin{table}[h!]
-\centering
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{|p{3cm}|p{3.5cm}|p{3.5cm}|p{4cm}|}
-\hline
-\textbf{Application} & \textbf{What’s Being Optimised?} & \textbf{LP Objective} & \textbf{Key Constraints} \\
-\hline
-\textbf{Network Flow} & Total flow from source to sink & Maximise flow & Arc capacities, flow conservation \\
-\hline
-\textbf{Allocation} & Task performance, resource use & Maximise benefit or minimise cost & Resource availability \\
-\hline
-\textbf{Transportation} & Goods delivery & Minimise cost & Supply and demand \\
-\hline
-\textbf{Matching} & Pairings between elements & Maximise weight / minimise cost & Each item matched once \\
-\hline
-\end{tabular}
-\caption{Summary of Linear Programming Applications}
-\end{table}
+If we think of the set of outcomes as a set $\Omega = \{1,2,3,4,5,6\}$ like a die, we can think of the set of events (often called the event space) as the power set of $\Omega$, $\powerset(\Omega)$. (The power set is the set of all subsets of $\Omega$, representing every combination of the outcomes in $\Omega$.) We may denote the event space by $\mathcal{F}$, though we are unlikely to use it extensively.
 
+When notating the words `and', `not' and `or', we use set theory symbols. To describe the situation where only outcomes that are not in an event $A$ are able to happen, we use $A^\complement$. More commonly you will see this written as $A'$. When only the outcomes mutual to events $A$ and $B$ are able to happen, we use $A \cap B$. When the outcomes of $A$ and $B$ can both happen, we use $A \cup B$. These are the same as the set theory symbols you will have seen at GCSE.
+
+Finally, to denote the probability of an event, we use the probability measure symbol $\probability(X)$ for an event $X$. This denotes the probability that the event $X$ occurs. (This is also, and perhaps more commonly, written simply as $\mathrm{P}(X)$ without the blackboard bold font.)
+
+\subsection{Basic intuitive results}
+
+We will now list some basic intuitive results in probability.
+
+\begin{theorembox}
+    \begin{theorem}
+        If all outcomes have the same probability of occurring, then for an event $A$ and a sample space $\Omega$: $$\probability(A) = \frac{\#A}{\#\Omega}$$ where $\#$ denotes the cardinality (size) of the set.
+    \end{theorem}
+\end{theorembox}
+\begin{ebox}
+    \begin{example}
+        If I have a fair die with outcomes in a sample space $\{1,2,3,4,5,6\}$, then the event of me getting an even number is $\{2,4,6\}$. The sample space has 6 elements, and the given event has 3 elements. Thus, $\probability(\{2,4,6\}) = \frac{3}{6} = 0.5$.
+    \end{example}
+\end{ebox}
+
+\begin{theorembox}
+    \begin{theorem}
+    \label{complement_theorem}
+        For any event $A$: $$\probability(A^\complement) = 1 - \probability(A)$$
+    \end{theorem}
+    (This should be self-explanatory knowing that for a sample space $\Omega$, $\probability(\Omega) = 1$.)
+\end{theorembox}
+
+\section{Independence and mutual exclusivity}
