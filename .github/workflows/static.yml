@@ -26,15 +26,37 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc
 
-      - name: Build HTML with Pandoc
+      - name: Build HTML (all .tex in notes/)
         run: |
           mkdir -p _site
-          pandoc notes/main.tex \
-            -s \
-            --toc \
-            --mathjax \
-            -o _site/index.html
-          # Prevent Pages/Jekyll from messing with underscores etc.
+          # Simple index page
+          cat > _site/index.html <<'EOF'
+          <!doctype html>
+          <html>
+          <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title>Notes</title>
+          </head>
+          <body>
+            <h1>Notes</h1>
+            <ul>
+          EOF
+
+          shopt -s nullglob
+          for f in notes/*.tex; do
+            base="$(basename "$f" .tex)"
+            out="_site/${base}.html"
+            pandoc "$f" -s --toc --mathjax -o "$out"
+            echo "  <li><a href=\"${base}.html\">${base}</a></li>" >> _site/index.html
+          done
+
+          cat >> _site/index.html <<'EOF'
+            </ul>
+          </body>
+          </html>
+          EOF
+
           touch _site/.nojekyll
 
       - name: Upload Pages artifact
