@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -58,6 +61,8 @@ jobs:
           for f in notes/*.tex; do
             base="$(basename "$f" .tex)"
             pandoc "$f" \
+              -f latex+raw_tex \ 
+              -t html \ 
               -s \
               --toc \
               --number-sections \ 
