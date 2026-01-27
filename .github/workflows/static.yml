@@ -65,6 +65,7 @@ jobs:
               -t html \ 
               -s \
               --toc \
+              --number-sections \ 
               --include-in-header=mathjax-config.html \
               -o "_site/${base}.html"
             echo "  <li><a href=\"${base}.html\">${base}</a></li>" >> _site/index.html
