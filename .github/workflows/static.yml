@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        shell: bash 
+        shell: bash
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -44,15 +44,15 @@ jobs:
           </head>
           <body>
             <h1>Unofficial University of Southampton BSc Mathematics Notes</h1>
-            
-            <p>These notes are not intended as a verbatim record of lectures, nor a complete textbook account of the modules. Instead, they reflect how I came to understand the material. They may contain errors or simplifications. Always cross-check with official lecture notes, textbooks, or lecturers’ guidance before relying on them.<\p>
-            
-            <p>Ideas often appear here after I have struggled with them on paper and more often than not, misunderstood them. As a result, a lot of the explanations emphasises intuition and alternative viewpoints that helped concepts click for me, even if those perspectives were not presented explicitely in lectures. <\p>
-            
-            <p>Where appropriate, I include questions I initially found confusing, common pitfalls, and informal explanation alongside formal definitions and proofs. The aim is clarity over maximal completeness. So if something here feels over-explained, that's usually become it once confused me.<\p>
 
-            <p>If you sport an error or have a question, feel free to email me at <a href: "mailto:sd2g25@soton.ac.uk">sd2g25@soton.ac.uk.</a> <\p>
-            
+            <p>These notes are not intended as a verbatim record of lectures, nor a complete textbook account of the modules. Instead, they reflect how I came to understand the material. They may contain errors or simplifications. Always cross-check with official lecture notes, textbooks, or lecturers’ guidance before relying on them.</p>
+
+            <p>Ideas often appear here after I have struggled with them on paper and more often than not, misunderstood them. As a result, a lot of the explanations emphasise intuition and alternative viewpoints that helped concepts click for me, even if those perspectives were not presented explicitly in lectures.</p>
+
+            <p>Where appropriate, I include questions I initially found confusing, common pitfalls, and informal explanations alongside formal definitions and proofs. The aim is clarity over maximal completeness. So if something here feels over-explained, that's usually because it once confused me.</p>
+
+            <p>If you spot an error or have a question, feel free to email me at <a href="mailto:sd2g25@soton.ac.uk">sd2g25@soton.ac.uk</a>.</p>
+
             <ul>
           EOF
 
@@ -61,11 +61,11 @@ jobs:
           for f in notes/*.tex; do
             base="$(basename "$f" .tex)"
             pandoc "$f" \
-              -f latex+raw_tex \ 
-              -t html \ 
+              -f latex+raw_tex \
+              -t html \
               -s \
               --toc \
-              --number-sections \ 
+              --number-sections \
               --include-in-header=mathjax-config.html \
               -o "_site/${base}.html"
             echo "  <li><a href=\"${base}.html\">${base}</a></li>" >> _site/index.html
@@ -78,6 +78,8 @@ jobs:
           </html>
           EOF
 
+          # Stop any Jekyll processing
+          touch _site/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
