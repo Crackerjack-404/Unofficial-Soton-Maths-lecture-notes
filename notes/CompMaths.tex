@@ -10,8 +10,45 @@
 
 \chapter{Linear Programming and Simplex}
 
+\section{Purpose}
 
 
+At its heart, Linear programming (LP) is all about min-maxing, with one restriction, namely linearity. So given limited resources and rules, what is the best thing we can do, and `best'  here means often maximising profit, or minimising cost. 
+
+Most common mistakes in LP often come from modelling the wrong thing. Formulating an LP means translating a given situation into: 
+\begin{itemize}
+    \item An objection 
+    \item Decision variables 
+    \item Constraints 
+\end{itemize}
+
+\section{Objective functions and constraints}
+
+Often what I find with computational heavy subjects is increasing boredom, so in my notes I will attempt to keep some curiosity alive
+
+I will not be going through how to formulate, because that process is very algorithmic and notes do a far better job with their memorable examples of diet. If time wasn't a difficult constraint \footnote{Pun intended, I'd be tempted to come up with my own examples, but for the time being, enjoy some \textbf{\href{https://www.matoles.com/stardew-mip}{Stardew Valley fun}}}
+
+\subsection{Decision variables}
+
+These are the things we control- like how much to buy, allocate, transport, etc. 
+
+\subsection{Objective function}
+
+This is the thing we're trying to optimise or min/max. 
+
+
+\subsection{Constraints}
+
+These describe what is allowed, and they are usually inequalities like $Ax \leq b$
+
+Geometrically speaking, each constraint takes off part of space, and the feasible region is what's left after applying all the constraints when optimising our objective function 
+
+Always remember non-negativity constraints like $x \geq 0$. They exist because negative quantities often have no interpretation. 
+
+
+\section{Link to Matrices}
+
+LP is secretly linear algebra where optimisation is simply moving between bases and updating matrices. More on this will be updated... 
 
 
 

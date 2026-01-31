@@ -24,20 +24,85 @@ Eg:
 
 The point I'm trying to make is that most proofs begins by assuming the hypotheses and nothing else. So we must avoid assuming what we're trying to prove. If the goal is to show that a set is a subspace, then we cannot assume closure until we have demonstrated it. 
 
-
 \chapter{Groups}
 
-Before I even define what a group is, \textbf{\href{https://www.southampton.ac.uk/courses/2026-27/modules/math2003}{MATH2003 Group Theory}} is a second year module which goes into more detail about group theory. 
+\section{Introduction}
+
+Before I even define what a group is, \textbf{\href{https://www.southampton.ac.uk/courses/2026-27/modules/math2003}{MATH2003 Group Theory}} is a second year module which goes into a lot more detail about group theory. 
 
 If and when I write `this will be useful later', I will try and briefly mention why. 
 
-% what this is 
-% Why is this relevant to linear algebra 
-% what on earth are we trying to do..? 
+\subsection{Cartesian Product}
+
+The Cartesian product is something that comes useful in both algebra and geometry. Eg: when $\mathbb{R}^2 = \mathbb{R} \times \mathbb{R}$ is both an algebraic construction (ordered pairs) and a geometric object (plane). Group theory continues this trend by abstracting operations rather than spaces. 
+
+\subsection{Binary operations}
+
+A \textbf{binary operation} on a set $S$ is a function 
+$$
+\ast : S \times S \rightarrow S 
+$$
+
+The key point here is \textbf{closure} - we combine two elements of a set which produces another element in the same set. Closure is another axiom satisfied by groups, which comes under binary operation.
+
+One might wonder why the term binary is used here, and this is simply because the operation reflects the number of inputs- two inputs in, one out. This ensures that other axioms like associativity, identity and inverse made sense. 
+
+\subsection{Well-defined operation}
+
+This term has come up before in Number Theory when working with equivalence classes and modular arithmetic. 
+
+An operation is called \textbf{well-defined} if its outputs depends only on the inputs, and not how those inputs are represented. An operation that is not well defined cannot form the basis of a group, since the result of combining two elements would be ambiguous. 
 
 \section{Definitions}
 
-A group is a set with binary operations that satisfy the axioms of 
+A \textbf{group} is a set $G$ with a binary operation $\ast$ that satisfies the axioms of: 
+
+\begin{itemize}
+    \item Associativity: $(a * b ) * c = a * (b * c)$
+    \item Identity: $\forall a \in G, \exists e \in G \ \ s.t. \ \ a * e = G$
+    \item Inverse: $\forall a \in G,  \exists b \in G \ \ s.t \ \ a * b = e $
+\end{itemize}
+
+Associativity is often taken for granted as an axiom, but it's what allows expressions involving many elements to be well-defined. Without this axiom, defining powers becomes problematic. 
+
+\subsection{Uniqueness}
+
+Every inverse is defined relative to the identity. In lecture notes and often in groups, only a right-inverse is assumed: $a * b = e$
+
+But using associativity, we can show that this also guarantees a left inverse, and that these two inverses are unique and equal to each other. 
+
+I won't go into detail, but the identity element and inverses in a group are unique. 
+
+
+\subsection{Abelian Groups}
+
+A group is called \textbf{abelian} if 
+$$
+a * b = b * a , \ \ \forall a,b \in G 
+$$
+
+Notice how this is the same as a group being commutative. However, it's important to note that we should never assume commutativity unless it is explicitly stated. Many familiar numerical groups are abelian, many matrix and symmetry groups are not. 
+
+The sets 
+$$
+Q^* = Q \setminus \set{0} , \ \ R^* = R \setminus \set{0} 
+$$
+
+form an abelian group under multiplication
+
+Zero must be removed from these sets as it has no multiplicative inverses. 
+
+\subsection{Finite groups}
+
+A group is said to be \textbf{finite} if it has finitely many elements. They often appear in combinatorics, cryptography and puzzles. 
+
+\subsection{Multiplication tables and Sudoku}
+
+In finite groups, we can have multiplication tables that encode the entire group structure. Each row and column must contain every element exactly once, which makes sense due to invertibility. 
+
+Other properties such as inverses and exponential laws are summarised well in lecture notes in \textbf{Proposition 1.4}
+
+What I will point out is that the reversal or the order also appears in matrix inverses, function composition and transposing products. 
 
 \chapter{Fields and Vector Spaces}
 
