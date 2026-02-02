@@ -138,10 +138,68 @@ There's is a very good reason for why this is called the characteristic equation
 
 As I mentioned before, a 2nd order ODE has a 2D solution space, so as we found that the auxiliary equation is a quadratic, we get roots (counting multiplicity). Therefore, all solutions are just the linear combination of those roots, and we can be certain that nothing is missing from our solution space. 
 
-This is also why if our discriminant of the quadratic is $0$, the second solution is multiplied by $x$ so that our solutions remain independent. In other words, $e^{\lambda x}$ has already used up one dimension, so $xe^{\lambda x}$ is the next simplest independent function\footnote{This can later be verified via Wronskian}
+This is also why if our discriminant of the quadratic is $0$, the second solution is multiplied by $x$ so that our solutions remain independent. In other words, $e^{\lambda x}$ has already used up one dimension, so $xe^{\lambda x}$ is the next simplest independent function\footnote{There is a power series justification for this, something which I won't be covering in my notes (yet)!}
 
 \section{Euler Type equations}
 
+
+Compared to the `usual' ODEs seen before, an Euler-type ODE has the form: 
+
+$$
+ax^2 \frac{d^2y}{dx^2} + bx \frac{dy}{dx} + cy = 0
+$$
+
+Now compare this to the constant-coefficient of $a\frac{d^2y}{dx^2} + b \frac{dy}{dx} + cy = 0$. 
+
+Both are linear, second order, and homogeneous. But the key difference we can see is that the coefficients depend on $x$, but in a structured way, i.e., each derivative is multiplied by a power of $x$ that matches its order. This is where knowing terminology is important. 
+
+It's also important to note that Euler type equations are scale-invariant. So if you rescale $x \rightarrow kx$, then every term scales the same way. 
+
+\subsection{Substitutions}
+
+Instead of just stating the substitution that is used to solve these kinds of ODEs, I think it's more helpful to think about what has worked before and why it may or may not work again. 
+
+In constant-coefficients ODEs, the substitution $y = e^{\lambda x}$ works because its derivative reproduces the same kind of structure. But in this case, as the coefficients depend on $x$, the same kind of differentiation alone doesn't preserve that form. 
+
+So instead, we ask ourselves a better questions, namely what functions behave better under scaling rather than translation. And the answer? $$y = x^{\lambda}$$
+
+Now, we pause and ponder why this function works. 
+
+These kind of equations are all about scaling and matching powers of $x$. Think about it this way: 
+$$
+y \sim x^{\lambda - 1}, \quad  y \sim x^{\lambda - 2}
+$$
+
+And if we multiply by the matching powers of $x$ we have: 
+
+$$
+x^2y \sim x^{\lambda}, \quad  xy \sim x^{\lambda}
+$$
+
+What we have done is just turned an ODE into an algebraic equation in $\lambda$ 
+
+
+The entire point of substitutions is looking for patterns. For constant-coefficients equations, we look at the translation symmetry, and use the property of exponentials. And for Euler type, we look at the scaling symmetry, and make use of the power laws. 
+
+
+
+\subsection{Change of variables}
+
+There is more detail in the lecture notes about using the auxiliary equation, so I will leave that as an exercise to the reader and focus more on the intuition side of things when it comes to dealing with this seemingly mysterious but clever method of change of variables. 
+
+Earlier with homogeneous equations, we introduced the substitution $z = \frac{y}{x}$ The motivation behind this was all to do with turning scaling into a translation, and in a similar vein, we use the same tactic. 
+
+Bear in mind that scaling a variable in $x$ is translation in $\ln x$
+
+$$
+x \rightarrow kx \implies \ln (kx) = \ln x + \ln k
+$$
+
+And we already know how to solve translation-invariant equations, which are just constant-coefficient ODEs. 
+
+So if roots are repeated on complex, we prefer to change variables before $x^{\lambda}$ won't give us two independent solutions. 
+
+If we abstract things a bit more, the solutions to an ODE form a vector space, and the dimension is the just the order of the equation. And the entire change of variables is just a change of basis for the problem, so essentially, we are just changing basis to diagonalise the differential operator\footnote{More on eigenfunctions later}
 
 \chapter{Wronskian}
 
