@@ -1,12 +1,13 @@
 ### These notes are **not official** and are based on my understanding of lectures, problem sheets, and independent reading.  
 
-These notes are not intended as a verbatim record of lectures, nor a complete textbook account of the modules. Instead, they reflect how I came to understand the material. 
 
-Ideas often appear here after I have struggled with them on paper and more often than not, misunderstood them. As a result, a lot of the explanations emphasises intuition and alternative viewpoints that helped concepts click for me, even if those perspectives were not presented explicitely in lectures. 
+These notes are not intended to be complete, poslished, or by any means a verbatim record of lectures. They exist largely because I was dissatisfied with solutiosn that worked without an intuitive explanation, and with substutitions and theorems that seemed to appear out of nowhere, and with textbooks that present mathematics as a finished product rather than a process of discovery. 
 
-Where appropriate, I include questions I initially found confusing, common pitfalls, and informal explanation alongside formal definitions and proofs. The aim is clarity over maximal completeness. So if something here feels over-explained, that's usually become it once confused me.
+Much of what is written here comes from mements where something "worked", but I didn't understand why it had to work, or why it was the right approach to try in the first place. My notes try and address the gap between the formal mathematics taught and the thinking that leads up to it. 
 
-These notes may contain errors or simplifications. Always cross-check with official lecture notes, textbooks, or lecturers’ guidance before relying on them.
+Where appropriate, I include questions I initially found confusing, common pitfalls, and informal explanation alongside formal definitions and proofs. These notes reflect how ideas made sense to me, so if something here feels over-explained, that's usually become it once confused me.
+
+The notes may contain errors or simplifications. Always cross-check with official lecture notes, textbooks, or lecturers’ guidance before relying on them.
 
 This repo contains my working notes for first-year mathematics modules at the Southampton currently include topics for the 2nd Semester: 
 - Calculus II
