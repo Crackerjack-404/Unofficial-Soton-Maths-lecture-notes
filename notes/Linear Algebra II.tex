@@ -48,7 +48,7 @@ The key point here is \textbf{closure} - we combine two elements of a set which 
 One might wonder why the term binary is used here, and this is simply because the operation reflects the number of inputs- two inputs in, one out. This ensures that other axioms like associativity, identity and inverse made sense.
 
 % how many binary operations + why? 
-Given a finite set with $n$ elements, there are 
+Given a finite set with $n$ elements, there are $n^{n^2}$ binary operations in that group. 
 
 \subsection{Well-defined operation}
 
@@ -159,7 +159,108 @@ $$
 
 So the group itself has order $n$, but not every element has order $n$ 
 
-% something about primes only giving one group?? 
+\section{Symmetries}
+
+When we use the term symmetry of an object, we essentially talk about an action that rearranges the object, but leaves it looking the same. 
+
+Think about rotating a square, reflecting a triangle, or shuffling positions. It is a beautiful thing to notice that symmetries of an object form a group. Why you ask?  
+\begin{itemize}
+    \item Doing two symmetries in a row is still a symmetry 
+    \item Every symmetry can be undone 
+    \item There is a `do nothing' symmetry
+\end{itemize}
+
+And notice how these are exactly the group axioms! 
+
+\subsection{Symmetry to Permutations}
+
+Instead of thinking about geometry, think about positions: 
+$$
+\set{ 1, 2, ... , n}
+$$
+
+A symmetry now becomes a matter of rearranging items, which we call \textbf{permutation}
+
+So symmetry and permutation groups are basically the same idea, just described differently. 
+
+More formally speaking, a permutation on a set $X$ is a \textbf{bijection} 
+$$
+\sigma : X \rightarrow X 
+$$
+
+Recall we defined what it meant for functions to be a bijection in Calculus I, similarly, a bijection for a group means that: 
+\begin{itemize}
+    \item injective: no two elements go to the same option 
+    \item surjective: every option is achieved 
+\end{itemize}
+
+So in other words - nothing is lost, and nothing is duplicated. Bijection is the property that ensures an 
+inverse exists and that permutations can be undone. 
+
+
+\subsection{Composition}
+
+The group operation in permutation groups is composition of functions. So if $\sigma, \tau$ are some permutatoins, then: 
+$$
+(\sigma \circ \tau )(x) = \sigma(\tau(x))
+$$
+Notice how this is associative, as function composition always it, but not commutative in general. 
+
+It's also important to know that we apply permutations right to left. 
+
+\subsection{Symmetric groups S_n}
+
+The symmetric group $S_n$ is simply the group of all permutations $\set{1,2,..n}$
+
+The order of this group is (and this comes up often in exam) is: 
+$$
+| S_n| = n!
+$$
+
+\subsection{Notations}
+
+There are two main types of notation: vector and cycle. 
+
+Both notations are explained in the notes, and I can't say any more than what's already written, except to practice doing questions involving joint and disjoint cycles. 
+
+Cycle notation is not unique, so order matters! 
+
+\subsection{Sign of a permutation}
+
+The sign of a permutation tells us whether the permutation preserves the orientation or flips it. Every permutation can be built from swaps of two elements, which we define as a \textbf{transposition}. 
+
+So the question the sign, $sgn{\sigma}$, here is trying to answer is whether we need an odd or an even number of swaps to build the permutation. 
+
+This is defined as: 
+$$
+sgn(\sigma) = \begin{cases}
+    +1 \text{ if $\sigma$ is even} \\
+    -1 \text { if $\sigma$ is odd}
+\end{cases}
+$$
+
+The even and odd here refer to the even and odd number of transpositions. 
+
+This is somewhat like the determinant. If we think about it, swapping two rows of a matrix flips the sign, and the sign also tracks orientations. So $\det$ is the weight sum over permutations, with the sign recording the parity. This will be covered later in the course so do keep an eye out for it!
+
+\subsubsection{Side tangent to permutation ciphers}
+
+It absolutely blows my mind that permutation ciphers are basically permutation groups and all the things discussed above about cycles, inverse, composition show up in this. 
+
+A permutation cipher fixes a block of position, say $n$ letters, then rearranges those position using a permutation $\sigma \in \S_n$ 
+
+So if the plaintext block is: 
+$$
+(x_1, x_2,... x_n)
+$$
+
+The encryption is: 
+$$
+(x_1, x_2,... x_n) \rightarrow (x_{\sigma^{-1}(1)},...x_{\sigma^{-1}(n)}) 
+$$
+
+And bijection ensures that these ciphers are decryptable! 
+
 
 \chapter{Fields and Vector Spaces}
 

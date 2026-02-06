@@ -8,7 +8,7 @@
 
 \tableofcontents 
 
-\chapter{Linear Programming and Simplex}
+\chapter{Intro to Linear Programming and Simplex}
 
 \section{Purpose}
 
@@ -45,13 +45,96 @@ Geometrically speaking, each constraint takes off part of space, and the \textbf
 
 Always remember non-negativity constraints like $x \geq 0$. They exist because negative quantities often have no interpretation. 
 
-\subsection{Feasible Region}
+\chapter{Geometry of LP}
 
-Graphically, this will be the set of all points $x$ that obey all the constraints 
-
-\section{Link to Matrices}
-
-LP is secretly linear algebra where optimisation is simply moving between bases and updating matrices. More on this will be updated... 
+Before we define and look at feasible regions, let's step back and think about structures that we have already seen before 
 
 
+\section{Vectors and dot products}
 
+The objective function in LP is $ c^T x$, which is essentially a dot product. 
+
+Geometrically speaking, $\vec{c}$ is a vector pointing in the direction of increases, and $x$ is just a point in space (a possible solution), $c^T x$ measures how far $x$ lies in the direction of $\vec{c}$
+
+In that view, maximising the objective function just means going as far as possible in the direction of $c$ without breaking the constraints. 
+
+
+\section{Hyperplanes}
+
+Hyperplanes are basically boundaries that will help us turn algebraic constraints into geometry. And without them, the inequalities are just symbols, and then our $\leq$ don't mean anything spacial. 
+
+With hyperplanes, we will soon come to see that every single constraint will essentially become a wall, and solutions a point, and with that, the feasible region can be represented geometrically. 
+
+\subsection{Intersections}
+
+The feasible region is essentially the set of all points that satisfy every constraint.
+
+However, we also note that each constraint
+$$a^T x \le b$$
+defines a half-space. 
+
+An equality implies a \textbf{hyperplane}, whereas an \textbf{inequality} implies one side of that hyperplane. 
+
+So another (and more interesting!) way to define a hyperplane is the intersection of all half-space. 
+
+So geometrically speaking: 
+\begin{itemize}
+    \item 2D $\implies$ polygon
+    \item 3D $\implies$ polyhedron
+    \item Higher dimensions $\implies$ still a polyhedron, just impossible to draw
+\end{itemize}
+
+\subsection{Objective functions} 
+
+The objective function $c^T x = k$ also defines hyperplanes. So all points with the same objective value lie on the hyperplane. And changing $k$ slides the plane in direction $c$. 
+
+So our optimsation problem rephrased is simply to slide a hyperplane until it hits the feasible region for the last time. 
+
+Another point to note, if we want to minimise some function say $f(x)$, that's the same as maximising the negative of it, i.e. 
+$$
+\max(f(x)) = \max(-f(x)) 
+$$
+Geometrically again, we have the same feasible region, but objective vector points in the oppostite way. 
+
+\section{Convex}
+
+So, we've discussed how the feasible region is an intersection of half-spaces, and therefore \textbf{convex}
+
+The geometric reason behind optimal LP solutions is that they lie at corners as they are the points where multiple hyperplanes meet. So they are the only locations where a linear objective can be maximised without violating the constraints. 
+
+There is a theorem on this, whose proof can be looked up in a textbook as it's not in the lecture notes 
+
+
+\section{Slack Variables}
+
+\textbf{Slack variables} do what they say- they represent unused resources in context. 
+
+Think of the constraint $a^Tx \leq b$. This can be rewritten using the slack variable: 
+$$
+a^Tx + s= b, \quad s \geq 0
+$$
+
+Geometrically, they measure how far we are from the boundary. So if $s=0$, the point lies on the hyperplane, and if $s > 0$, the point lies inside the half-space that we defined before. 
+
+\section{Surplus variables}
+
+Similar to slack variables, surplus variables are taken away represent excess resources. 
+
+So we consider the constant $a^Tx \geq b$ and can rewrite it as: 
+$$
+a^Tx - s = b , \quad s \geq 0
+$$
+
+Once again, this is a distance from the hyperplane. 
+
+\section{Why we convert inequalities to equalities}
+
+Once are equations have been turned into equalities and non-negative variables, we can write in the form of $Ax = b$. 
+
+Now, here's the exciting bit, each solution corresponds to a choice of basis vectors, and the corners correspond to a basic feasible solutions. We have turned simplex into a linear algebra problem! 
+
+Look into lecture notes for what it means to write constraints in canonical forms. 
+
+
+
+\chapter{Gradient Descent}
