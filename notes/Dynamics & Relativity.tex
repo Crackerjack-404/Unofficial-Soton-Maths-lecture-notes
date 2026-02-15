@@ -352,8 +352,95 @@ If we think about it, a heavier object has a larger $mg$. So to balance a larger
 
 \chapter{Oscillations and Resonance}
 
+This chapter is all about how 2nd order linear systems behave when energy is lost. 
+
+\section{Note on the Taylor expansion (again!)}
+
+Say we have a general system: 
+$$
+\ddot{x} = f(x)
+$$
+
+Now, near equilibrium, $x = x_0$, so when we Taylor expand we get: 
+$$
+f(x) \approx f(x_0) + f^{\prime}(x_0)(x-x_0) 
+$$
+
+And at equilibrium, we have $f(x_0) = 0$, so we get: 
+$$
+\ddot{x} \approx f^{\prime} (x_0)(x-x_0) 
+$$
+
+And if $f^{\prime} <0$ we just have the harmonic oscillator equation: 
+$$
+\ddot{x} + \omega_0^2 x = 0 
+$$
+
+The idea I want to convey here is that, Taylor expansions are incredibly useful and we'll use them all the time to linearise non-linear systems at equilibrium 
+
+\section{Roots and Damping}
+
+Let's take our usual 2nd order ODE equation with constant coefficients: 
+$$
+\ddot{x} + \gamma \dot{x} + \omega_0^2 x = 0  
+$$
+
+Where the restoring force is $\omega_0^2x$ and the damping force is $\gamma x$
+
+The characteristic equation (or auxiliary equation) we have is: 
+$$
+r^2 + \gamma r + \omega_0^2 = 0
+$$
+
+Which have the solutions: 
+$$
+r = \frac{-\gamma \pm \sqrt{\gamma^2 - 4 \omega_0^2}}{2}
+$$
+
+Now, the damping types correspond to the roots of our equation, which in turn relate to the eigenvalue of the system. I won't go into labelling which one's which, but will rather try to make connections to what is also being taught in Calculus and Linear Algebra in parallel to this course. 
+
+If we are underdamped, then $\gamma^2 < 4 \omega_0^2$ and the roots will have $\sin$ and $\cos$ terms in them. So the system will oscillate, but the amplitude with decay exponentially. 
+
+With critical damping, we have a double root and solution will be something in the form of: 
+$$
+x(t) = (A+ Bt) e^{\frac{- \gamma t}{2}}
+$$
+
+We can see that there are no oscillatory terms in there, given the lack of trig functions. So this is fastest possible decay. 
+
+And with the final case of overdamping, we have $\gamma^2 > 4\omega_0^2$ so we get two negative real roots and there is still no oscillation, just slow return to equilibrium. 
+
+It is very useful looking at graphs of each of these damping situations, the notes have more helpful information on them. 
+
+Damping is kind of like moving eigenvalues in the complex plane. 
 
 
+\section{Particular integrals}
+
+Now, a particular integral is essentially a steady-state response to the forcing term of the ODE. 
+
+Given the solution to our ODE is in the form of: 
+$$
+x(t) = x_h(t) + x_p(t)
+$$
+
+With $h$ and $p$ corresponding to the homogeneous and particular solution parts of the ODE. Now, when we solve ODEs in dynamics, the $x_h$ term vanishes if damping exists but the $x_p$ term survives. 
 
 
+\section{Driven oscillations}
+
+If you notice the homogeneous oscillatory equation $\ddot{x} + \omega_0^2 x = 0$, notice how this is the same as solving an eigenvalue problem $Lx = \lambda x$
+
+The natural frequency of the system is the eigenvalue. And we want to think of the eigenvalue problem here as teh limit as the damping term, $\gamma$ goes to $0$
+
+In other words, when $\gamma \to 0$, the roots move onto the imaginary axis (hence the appearance of $\sin$ and $\cos$, the resonance becomes singular. 
+
+\section{Suspension systems}
+
+For some real world intuition, we ideally want: 
+\begin{itemize}
+    \item Overdamping - no oscillation - good for doors 
+    \item Underdamping - oscillation that settles - good for cards 
+    \item Critical damping - fastest return without oscillation - good for shocks
+\end{itemize}
 
