@@ -135,6 +135,95 @@ Now, here's the exciting bit, each solution corresponds to a choice of basis vec
 
 Look into lecture notes for what it means to write constraints in canonical forms. 
 
+\chapter{The Fundamental Theorem of Linear Programming}
 
+\section{Optimum solutions}
+
+Linear programming has only a small number of possible outcomes, and if an optimal solution exists, it will be at a corner (vertex). 
+
+In other words, we want to imagine, as discussed briefly earlier, the feasible region as a polyhedrom $P$, and look at the 3 cases: 
+
+\begin{itemize}
+    \item Infeasible: $P = \emptyset $ This gives us no solutions as it doesn't lie in the solution span
+    \item Unbounded: the objective function can go to $+ \infty$ or $- \infty$ along a feasible direction
+    \item Optimal: the objective function attains a maximum or a minimum at some point in $P$ 
+\end{itemize}
+
+So what LP does is goes from an infinite set of points to finitely many candidates (vertices) and the directions of those feasible directions. 
+
+
+\section{Augmented Matrices}
+
+We start by formulating LP with lots of inequalities, and want to move to something we can work with. 
+
+So we take our decision variables, $x \in \mathbb{R}$, the inequality constraints, $Ax \leq b$, and the non-negativity constraints, $x \geq 0$ and define our feasible region as a polyhedron $P$ such that: 
+$$
+P := \set { x \in \mathbb{R^n} : Ax \leq b, x \geq 0}
+$$
+
+As looked in the last chapter, we then convert our inequalities to equalities using slack variables: 
+$$
+Ax + s =b, \quad x \geq 0, s \geq 0
+$$
+
+And then we can stack variables into one vector: 
+$$
+y = \begin{bmatrix}
+    x \\ 
+    s 
+\end{bmatrix} \geq 0, \quad [ A | I ] y = b
+$$
+
+And now, if recall from Linear Algebra I, we have this augmented matrix form which we can work with and do fun things like Gaussian elimination. 
+
+\section{Corners and Convex Combinations}
+
+As aforementioned, polyhedra are an intersection of halfspaces, so they are convex, and any non vertex point in a convex set can essentially be written as a convex combination of other points in the set. 
+
+Recall the definition of a convex combination: 
+$$
+x = \sum_{i=1}^{k} \lambda_i v_i, \quad \lambda_i \geq 0, \quad \sum \lambda_i = 1
+$$
+
+And once again we're back at the fundamental theorem, if $x$ is a feasible and not a vertex, it can be expressed as a convex combination of two distinct feasible points. 
+
+With some intuition, the reason why optimum solutions lie at a vertex is because if we're not at a corner, we can move along a line segment inside the polyhedra $P$. Now, along that segment, a linear function can't have a strict interior maximum. So the best value must happen at an endpoint, i.e a vertex. 
+
+Now, if one wants to go further, the lectures suggest looking into \textbf{Wely-Minkowski} theorem for why polyhedra can be described as either an intersection of half-spaces or as a convex combinations of vertices and a cone of rays. 
+
+\section{Complexity}
+
+Now, I won't go into detail about time complexity and the proper Big-0 notation as that can be found in the notes. 
+
+\chapter{The Simplex Algorithm}
+
+\section{Introduction}
+
+In the most simplest (pun intended) way possible, the simplex algorithm walks along the edges of the feasible polyhedron from vertex to vertex, in the direction of the objective function until no more improvements exist. 
+
+The setup and the method can be found in the notes, which I suggest being looked at. What I will cover here is some of the reasoning behind why matrices and things appear. 
+
+Our goal is to maximise some objective function $c^Tx$ subject to $Ax \leq b, x \geq 0$. Let's start with what we know about the geometry. 
+
+\begin{itemize}
+    \item Each row of $A$ defines a hyperplane 
+    \item The inequalities defines halfspaces 
+    \item Their intersection is a polyhedron 
+    \item The objective defines a fmaily of parallel hyperplanes
+\end{itemize}
+
+And optimisation is just imagine sliding our objective function in direction $c$ until it last touches the feasible region, and we know that if an optimum exists, it happens at a vertex. 
+
+So now, the better question to ask is- how do we systematically move from one vertex to a better one? 
+
+\section{Linear Algebra}
+
+Now, vertices are not just some mystical geometric objects. They correspond to choosing a subset of columns of $A$, which forms and invertible square matrix $B$, so we end up solving a system of linear equations. 
+
+In other words, a vertex is just a particular choice of linearly independent columns. 
+
+The simplex algorithm then, is repeatedly choosing a new basis (i.e. a new invertible set of columns) that improves the objective value. 
+
+To motivate the idea of matrices further, we can't just compute in say 8 dimensions by drawing pretty pictures, we need some sort of algebraic structure. And matrices happen to encode all of those things with them. So when we pivot in the tableau, we are eliminating one set of variables in terms of another. 
 
 \chapter{Gradient Descent}
