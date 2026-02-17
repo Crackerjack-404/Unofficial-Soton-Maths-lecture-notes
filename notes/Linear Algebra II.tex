@@ -348,6 +348,46 @@ $$
 
 So we can see that it's just a function from an indexed set into a  field, so $M_{m \times n} (F)$ is a vector space. 
 
+\section{Subspaces}
+
+Before going into what a subspace is, let's think about the word and the idea of a `sub' thing. 
+
+A subspace, informally, is like a smaller collection of vectors forming part of a bigger vector space, which also behaves like a vector space. So you might've noticed that the subspace axioms are the same as the vector space axioms. 
+
+\subsection{Subset vs Subspace}
+
+Let's look at two different notations below: 
+$$
+W \subseteq V , \quad W \leq V
+$$
+
+The first notation, $W \subseteq V$, means that every element of $W$ is in $V$, whereas the right hand notation is for subspace that can be often seen in textbooks. 
+
+So writing $W \leq V$ is the same as saying $W$ is a subset of $V$ and $W$ is a vector space itself under the same operations. 
+
+The main idea here is - every subspace is a subset, but not every subset is a subspace. 
+
+\subsection{The origin}
+
+Similar to vector spaces, subspaces must also contain the origin. And any line not through the origin is not a subspace. So one of the axioms that a subspace satisfies is that $0_v \in W$
+
+\subsection{Usefulness}
+
+Now, I don't think it's immediately obvious why subspaces are useful things. But later in the course they will be very helpful in describing things like: 
+\begin{itemize}
+    \item Solution sets of homogeneous equations 
+    \item Span of vectors 
+    \item Null and column spaces 
+    \item Eigenspaces 
+\end{itemize}
+
+Basically, every important structure in linear algebra is a subspace, including matrices. 
+
+All $m \times n$ matrices form a vector space and with them, all symmetric and upper triangular are subspaces because they obey the axioms of closure under addition and scalar multiplication. 
+
+Not only this, all sequences and function spaces are also vector spaces, examples of which can be found in the notes. 
+
+
 \chapter{Bases}
 
 \chapter{Linear Transformations}
