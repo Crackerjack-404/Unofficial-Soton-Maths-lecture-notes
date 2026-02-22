@@ -390,6 +390,78 @@ Not only this, all sequences and function spaces are also vector spaces, example
 
 \chapter{Bases}
 
+\section{The Problem}
+
+Before defining anything, we must ourselves a very important question: if vectors are just abstract objects, how do we describe them? 
+
+In $\mathbb{R}^2$, we have $(x,y)$ coordinates which we can write as: 
+$$
+(x,y) = x(1,0) + y(0,1)
+$$
+
+These coordinates come from the standard basis vectors of $\mathbb{R}^2$, namely $(1,0), (0,1)$
+
+However, when now working with spaces of polynomials, matrices and functions, there is no obvious $(1,0)$ arrow. So the problem, or the question that bases address is how we describe vectors abstractely and systematically in an abstract vector space. 
+
+\section{Building Blocks to Bases}
+
+Let's recall a few definitions from Linear Algebra I, I promise this will help us when we eventually come to defining what a basis is. 
+
+\subsection{Linear Combination}
+An element $v \in V$ is a \textbf{linear combination} if $\exists a \in F$ such that: 
+$$
+v = a_1v_1 +... + a_n v_n
+$$
+
+This is essentially how we build new vectors from old ones, adding scalars from a field. 
+
+\subsection{Span}
+A \textbf{span} defined as: 
+$$
+\text{span} \set{v_1... v_n} = \set {a_1 v_1+ ... + a_nv_n | a_1...a_n \in F}
+$$
+
+is simply a set of all linear combinations. So if a linear combination is building new vectors, a span is the set of everything we can build from those vectors. 
+
+Here's an important note we'll visit later: \textbf{The span of a set is the smallest subspace containing that set}
+
+The proof of the above can be found in notes, what it's saying is that the span of a set is itself a subspace, and that any smaller subspace than the span cannot contain all linear combinations. 
+
+Think about this intuitively for a minute, the span contains all the possible vectors we can reach as it has all the possible linear combinations, so it acts kind of linear a container for those vectors. 
+
+\subsection{Linear Independence}
+
+Vectors are said to be \textbf{Linearly independent} $\iff$
+$$
+a_1 v_1 +... a_n v_n = 0 \implies a_1 = ... = a_n = 0
+$$
+
+What this means is that no vectors can be built as a linear combination of other vectors. 
+
+\section{Defining a Basis}
+
+Now we have all the definitions we need to define a basis. 
+
+In simple terms, a \textbf{basis} is a set of vectors that \textbf{both} spans the space and is linear independent, i.e. a basis is the smallest complete set of vectors we need to build our vector space. 
+
+I'd like you to think why we need both conditions to be true here. The problem we were trying to solve is finding a system to represent vectors so that we have enough vectors to reach everything, and few enough vectors so that representation is unique. Notice how both of those criteria are just the definition of span and linear independence. 
+
+\section{The Coordinate Problem}
+
+Going backwards the, if $B = \set {v_1.. v_n}$ is a basis of $V$, then every vector $v \in V$ can be written uniquely as a linear combination: 
+$$
+v = a_1v_1 +... + a_n v_n
+$$
+
+So once a basis is fixed, every vectors gets assigned coordinates and more importantly, those coordinates are unique. What we have in this case is now a \textbf{tuple of scalars}
+
+Once we choose a basis, i..e choosing a coordinate system for our vector space, we can represent any vector as $(a_1...a_n)$ such that: 
+$$
+V \cong F^n
+$$
+
+Isomorphism is something that will be covered in more detail later, but the idea here is that we can turn any abstract object into coordinate tuples, which is incredibly powerful. 
+
 \chapter{Linear Transformations}
 
 \chapter{Determinants}
