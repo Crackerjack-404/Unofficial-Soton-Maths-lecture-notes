@@ -589,3 +589,46 @@ Depending on coefficients, we can get:
 
 The reason is simple, it's what shape you get when you intersect a plane with a quadratic surface, and conics come from slicing surfaces. 
 
+\chapter{Limits}
+
+In 1D, limits are often written as: 
+$$
+\lim_{x \to a} f(x) = L
+$$
+which essentially means that when $x$ is close to $a$, $f(x)$ is close to $L$ 
+
+However, now in 2D, we need to think about limits from multiple directions: 
+$$
+\lim_{(x,y) \to (a,b)} f(x,y) = L 
+$$
+
+Similarly, this means that whenever $(x,y)$ is close to $(a,b)$ from ANY direction, the value of $f(x,y)$ is close to $L$
+
+Key takeaway, in 1D, we only have two direction, but in 2D, we have infinitely many paths we can take. 
+
+\section{Formal definition}
+
+Our epsilon-delta definition of a limit also changes here, so we have: 
+$$
+\forall \epsilon > 0, \exists \delta > 0 \ \ s.t. 0 < \sqrt{(x-a)^2 + (y-b)^2} > \delta \implies | f(x,y)- L| \leq \epsilon
+$$
+
+Now instead instead of closed intervals, we're dealing with neighbourhood of $(a,b)$
+
+\section{Continuity and Domain}
+
+A function is continuous at $(a,b)$ if: 
+\begin{itemize}
+    \item $(a,b)$ is in the domain 
+    \item the limit exists 
+    \item the limit equals the function value
+\end{itemize}
+
+So continuity depends on both the limit and the domain containing interior points. 
+
+
+\section{(non)-Existence of limits}
+
+In multivariable calc, if two different paths give different limits, then the limit does not exist. So we don't need to check infinitely many points, but only two contradictory paths. 
+
+The methods of finding limits can be found in the notes, so I won't talk about that. 
